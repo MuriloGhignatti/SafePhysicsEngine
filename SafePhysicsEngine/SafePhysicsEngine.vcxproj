@@ -156,6 +156,12 @@
   <ItemGroup>
     <ClCompile Include="SafePhysicsEngine.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PluginManager\PluginManager.vcxproj">
+      <Project>{8c2a919d-04cd-4418-ac92-190a06e6b087}</Project>
+      <Name>PluginManager</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

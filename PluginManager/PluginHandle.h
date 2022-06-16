@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "IPlugin.h"
-typedef std::shared_ptr<IPlugin>(*LoadPluginFunc)();
+typedef IPlugin* (*LoadPluginFunc)();
 #if defined(_WIN64) || defined(_WIN32)
 
     // WINDOWS
@@ -12,7 +12,7 @@ typedef std::shared_ptr<IPlugin>(*LoadPluginFunc)();
     #define HYBRIS_EVT_EXPORT __declspec(dllexport)
     #define HYBRIS_HANDLE_TYPE HMODULE
     #define HYBRIS_PROGRAM_HANDLE(x) LoadLibraryW(x);
-    #define HYBRIS_LOAD_EXTERN GetProcAddress
+    #define HYBRIS_LOAD_EXTERN(handleVar, toLoad) GetProcAddress(handleVar, toLoad)
     #define HYBRIS_CLOSE_EXTERN FreeLibrary
     #define HYBRIS_LIBRARY_SUFFIX L".dll"
 
