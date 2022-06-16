@@ -1,9 +1,9 @@
 
-#include "../PluginManager/PluginHandle.h"
+#include "SafeModuleManager.h"
 
 int main(int argc, char* argv[])
 {
-    PluginHandle myPluginHandle("test.dll");
+    SafeModuleManager myPluginHandle("test.dll");
     myPluginHandle.load()->onLoad();
     return 0;
 }

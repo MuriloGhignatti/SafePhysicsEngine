@@ -1,11 +1,11 @@
 ﻿#pragma once
 
 #include <iostream>
-#include "../PluginManager/IPlugin.h"
+#include "SafeModule.h"
 
-class PluginTest: public IPlugin
+class PluginTest: public SafeModule
 {
 public:
     void onLoad() override;
-    std::string command(std::string command, std::string options) override;
+    std::string command(std::string& command, std::string& options) override;
 };
