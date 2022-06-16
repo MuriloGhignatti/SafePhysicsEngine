@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <string>
 
+#define SAFE_EXPORT_SYMBOL extern "C" __declspec (dllexport)
+
 class IPlugin
 {
 public:
@@ -11,19 +13,19 @@ public:
 };
 
 #define DEFINE_PLUGIN(classType, pluginName, pluginVersion) \
-extern "C" {                                                \
-IPlugin* load()                                             \
+                                                            \
+SAFE_EXPORT_SYMBOL IPlugin* load()                          \
 {                                                           \
 return new classType();                                     \
 }                                                           \
                                                             \
-const char* name()                                          \
+SAFE_EXPORT_SYMBOL const char* name()                       \
 {                                                           \
 return pluginName;                                          \
 }                                                           \
                                                             \
-const char* version()                                       \
+SAFE_EXPORT_SYMBOL const char* version()                    \
 {                                                           \
 return pluginVersion;                                       \
 }                                                           \
-}
+

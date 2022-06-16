@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[])
 {
-    PluginHandle myPluginHandle("PluginTest.dll");
+    PluginHandle myPluginHandle("test.dll");
     myPluginHandle.load()->onLoad();
     return 0;
 }

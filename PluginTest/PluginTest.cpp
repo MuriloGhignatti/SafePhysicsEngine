@@ -9,3 +9,5 @@ void PluginTest::onLoad()
 {
     std::cout << "PluginTest Loaded" << "\n";
 }
+
+DEFINE_PLUGIN(PluginTest, "plugin safe", "0.0.1")
