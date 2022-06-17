@@ -2,8 +2,22 @@
 
 #include <memory>
 
+#include <vector>
+#include <filesystem>
 #include "SafeModule.h"
-typedef SafeModule* (*LoadPluginFunc)();
+#include "World.h"
+
+using LoadPluginFunc = SafeModule *(*)();
+
+struct SafeLoadedModule{
+    std::shared_ptr<SafeModule> instance;
+    std::string name;
+    std::string version;
+
+    SafeLoadedModule(std::shared_ptr<SafeModule> instance, char const* name, char const* version): instance(instance), name(name), version(version){
+
+    }
+};
 
 #if defined(_WIN64) || defined(_WIN32)
 
@@ -37,12 +51,14 @@ class SafeModuleManager
     HYBRIS_HANDLE_TYPE handle;
     char* (*_get_name)();
     char* (*_get_version)();
+    std::vector<SafeLoadedModule> instances;
+    bool anyPluginNeedTickUpdate{false};
+    std::string pathToPluginsFolder;
 
-    std::shared_ptr<SafeModule> instance;
+    void loadPlugin(std::wstring path);
+
 public:
-    explicit SafeModuleManager(std::string pathToPluginsFolder);
-
-    std::string get_name();
-    std::string get_version();
-    std::shared_ptr<SafeModule> load();
+    explicit SafeModuleManager(std::string pathToPluginsFolder): pathToPluginsFolder(pathToPluginsFolder){}
+    void loadPlugins();
+    void sendTickUpdates(World& world);
 };

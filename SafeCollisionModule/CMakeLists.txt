@@ -1,3 +1,3 @@
-add_library(safeCollisionModule SHARED SafeCollisionModule.cpp )
+add_library(safeCollisionModule SHARED SafeCollisionModule.cpp)
 
 target_link_libraries(safeCollisionModule PRIVATE safeModule)

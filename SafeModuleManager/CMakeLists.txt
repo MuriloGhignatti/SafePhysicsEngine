@@ -1,4 +1,4 @@
 add_library(safeModuleManager STATIC SafeModuleManager.cpp)
 
-target_link_libraries(safeModuleManager PRIVATE safeModule)
+target_link_libraries(safeModuleManager PUBLIC safeModule)
 target_include_directories(safeModuleManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

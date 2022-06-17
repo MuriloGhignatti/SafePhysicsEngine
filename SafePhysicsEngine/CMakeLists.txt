@@ -1,3 +1,0 @@
-add_executable(safe_engine SafePhysicsEngine.cpp)
-
-target_link_libraries(safe_engine PRIVATE safeModuleManager)
