@@ -9,7 +9,7 @@
 
 int main(int argc, char* argv[])
 {
-    SafeModuleManager safeModuleManager("E:\\Codes\\C++\\SafePhysicsEngine\\cmake-build-debug-visual-studio\\SafeCollisionModule");
+    SafeModuleManager safeModuleManager("../Plugins");
     safeModuleManager.loadPlugins();
     World world(100, 100, 100);
 
